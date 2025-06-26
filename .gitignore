@@ -1,0 +1,21 @@
+# Entorno Virtual
+venv/
+.venv/
+
+# Archivos de Secretos
+.env
+*.env
+
+# Bases de datos
+*.sqlite3
+db.sqlite3
+
+# Archivos de caché de Python
+__pycache__/
+*.pyc
+
+# Archivos de Medios y Estáticos de Django (los generados en local)
+/media/
+/static_root/
+
+# etc...
