@@ -136,3 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Al final del archivo base.py
 AUTH_USER_MODEL = 'users.User'
+
+
+# Redireccion de login/logout
+LOGIN_REDIRECT_URL = 'courses:course_list'
+LOGOUT_REDIRECT_URL = 'courses:course_list'
