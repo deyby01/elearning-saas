@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-3">{{ course.title }}</h1>
+            <p class="text-muted">
+                Impartido por: <strong>{{ course.instructor.get_full_name|default:course.instructor.username }}</strong>
+                <br>
+                Escuela: {{ course.tenant.name }}
+            </p>
+            <hr>
+            <h4>Descripción del Curso</h4>
+            <p>{{ course.description }}</p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Lecciones del Curso
+                </div>
+                <ul class="list-group list-group-flush">
+                {% for lesson in course.lessons.all %}
+                    <li class="list-group-item">
+                        {{ lesson.title }}
+                        {% if lesson.lesson_type == 'VIDEO' %}
+                            <span class="badge bg-primary float-end">Video</span>
+                        {% else %}
+                            <span class="badge bg-secondary float-end">Texto</span>
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">Este curso aún no tiene lecciones.</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
